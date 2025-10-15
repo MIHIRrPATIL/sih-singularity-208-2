@@ -1,0 +1,620 @@
+{
+  "orders": [
+    {
+      "id": "ORD-2401",
+      "materialType": "Steel Coils",
+      "quantity": 20000,
+      "quantityUnit": "kg",
+      "cost": 450000,
+      "estimatedCost": 450000,
+      "deliveryDateTime": "2025-10-15T14:00:00",
+      "priority": "HIGH",
+      "status": "Active",
+      "dimensions": {
+        "length": 8,
+        "width": 4,
+        "height": 3,
+        "unit": "m"
+      },
+      "shape": "box",
+      "source": {
+        "location": "Bhilai Steel Plant",
+        "cmoId": "CMO-1",
+        "coordinates": { "lat": 21.2, "lon": 81.4 }
+      },
+      "destination": {
+        "location": "Mumbai Port",
+        "address": "Mumbai, Maharashtra",
+        "coordinates": { "lat": 19.0, "lon": 72.8 }
+      },
+      "assignedWagon": "WGN-001",
+      "assignedRake": "RAKE-001",
+      "conflicts": 0,
+      "remarks": "Urgent delivery required",
+      "createdAt": "2025-10-10T09:00:00",
+      "updatedAt": "2025-10-12T15:30:00"
+    },
+    {
+      "id": "ORD-2402",
+      "materialType": "Iron Ore",
+      "quantity": 15000,
+      "quantityUnit": "kg",
+      "cost": 320000,
+      "estimatedCost": 320000,
+      "deliveryDateTime": "2025-10-16T09:00:00",
+      "priority": "MEDIUM",
+      "status": "Active",
+      "dimensions": {
+        "length": 6,
+        "width": 4,
+        "height": 3,
+        "unit": "m"
+      },
+      "shape": "cylinder",
+      "source": {
+        "location": "Rourkela Steel Plant",
+        "cmoId": "CMO-2",
+        "coordinates": { "lat": 22.2, "lon": 84.9 }
+      },
+      "destination": {
+        "location": "Delhi",
+        "address": "Delhi NCR",
+        "coordinates": { "lat": 28.6, "lon": 77.2 }
+      },
+      "assignedWagon": "WGN-001",
+      "assignedRake": "RAKE-001",
+      "conflicts": 0,
+      "remarks": "",
+      "createdAt": "2025-10-10T10:30:00",
+      "updatedAt": "2025-10-12T16:00:00"
+    },
+    {
+      "id": "ORD-2403",
+      "materialType": "Coal",
+      "quantity": 18000,
+      "quantityUnit": "kg",
+      "cost": 280000,
+      "estimatedCost": 280000,
+      "deliveryDateTime": "2025-10-14T18:00:00",
+      "priority": "HIGH",
+      "status": "Active",
+      "dimensions": {
+        "length": 7,
+        "width": 4,
+        "height": 2.5,
+        "unit": "m"
+      },
+      "shape": "box",
+      "source": {
+        "location": "Bokaro Steel Plant",
+        "cmoId": "CMO-3",
+        "coordinates": { "lat": 23.7, "lon": 86.2 }
+      },
+      "destination": {
+        "location": "Bangalore",
+        "address": "Bangalore, Karnataka",
+        "coordinates": { "lat": 12.9, "lon": 77.6 }
+      },
+      "assignedWagon": "WGN-002",
+      "assignedRake": "RAKE-001",
+      "conflicts": 0,
+      "remarks": "",
+      "createdAt": "2025-10-09T14:00:00",
+      "updatedAt": "2025-10-12T17:00:00"
+    },
+    {
+      "id": "ORD-2404",
+      "materialType": "Limestone",
+      "quantity": 25000,
+      "quantityUnit": "kg",
+      "cost": 190000,
+      "estimatedCost": 190000,
+      "deliveryDateTime": "2025-10-17T11:00:00",
+      "priority": "LOW",
+      "status": "Pending",
+      "dimensions": {
+        "length": 10,
+        "width": 4,
+        "height": 3,
+        "unit": "m"
+      },
+      "shape": "sphere",
+      "source": {
+        "location": "IISCO Steel Plant",
+        "cmoId": "CMO-4",
+        "coordinates": { "lat": 23.6, "lon": 87.3 }
+      },
+      "destination": {
+        "location": "Chennai",
+        "address": "Chennai, Tamil Nadu",
+        "coordinates": { "lat": 13.0, "lon": 80.2 }
+      },
+      "assignedWagon": "WGN-003",
+      "assignedRake": "RAKE-001",
+      "conflicts": 2,
+      "remarks": "Check capacity constraints",
+      "createdAt": "2025-10-11T08:00:00",
+      "updatedAt": "2025-10-13T09:00:00"
+    },
+    {
+      "id": "ORD-2405",
+      "materialType": "Cement",
+      "quantity": 22000,
+      "quantityUnit": "kg",
+      "cost": 350000,
+      "estimatedCost": 350000,
+      "deliveryDateTime": "2025-10-18T10:00:00",
+      "priority": "MEDIUM",
+      "status": "Active",
+      "dimensions": {
+        "length": 8,
+        "width": 4,
+        "height": 3.5,
+        "unit": "m"
+      },
+      "shape": "box",
+      "source": {
+        "location": "Bhilai Steel Plant",
+        "cmoId": "CMO-1",
+        "coordinates": { "lat": 21.2, "lon": 81.4 }
+      },
+      "destination": {
+        "location": "Kolkata",
+        "address": "Kolkata, West Bengal",
+        "coordinates": { "lat": 22.5, "lon": 88.3 }
+      },
+      "assignedWagon": "WGN-004",
+      "assignedRake": "RAKE-001",
+      "conflicts": 0,
+      "remarks": "",
+      "createdAt": "2025-10-11T11:00:00",
+      "updatedAt": "2025-10-13T10:00:00"
+    }
+  ],
+  "cmos": [
+    {
+      "id": "CMO-1",
+      "name": "Bhilai Steel Plant",
+      "location": "Bhilai, Chhattisgarh",
+      "coordinates": { "lat": 21.2, "lon": 81.4 },
+      "materials": ["Steel Coils", "Iron Ore", "Cement"],
+      "inventory": 850,
+      "maxInventory": 1000,
+      "inventoryUnit": "tons",
+      "pathCost": 45000,
+      "timeCost": 12,
+      "timeCostUnit": "hours",
+      "status": "Available",
+      "efficiency": 89,
+      "totalDeliveries": 45,
+      "avgCost": 42000,
+      "assignedOrders": ["ORD-2401", "ORD-2405"],
+      "operatingHours": "24/7",
+      "contactPerson": "Rajesh Kumar",
+      "contactPhone": "+91-9876543210"
+    },
+    {
+      "id": "CMO-2",
+      "name": "Rourkela Steel Plant",
+      "location": "Rourkela, Odisha",
+      "coordinates": { "lat": 22.2, "lon": 84.9 },
+      "materials": ["Coal", "Limestone", "Iron Ore"],
+      "inventory": 620,
+      "maxInventory": 1000,
+      "inventoryUnit": "tons",
+      "pathCost": 38000,
+      "timeCost": 10,
+      "timeCostUnit": "hours",
+      "status": "Limited",
+      "efficiency": 92,
+      "totalDeliveries": 38,
+      "avgCost": 38500,
+      "assignedOrders": ["ORD-2402"],
+      "operatingHours": "24/7",
+      "contactPerson": "Amit Singh",
+      "contactPhone": "+91-9876543211"
+    },
+    {
+      "id": "CMO-3",
+      "name": "Bokaro Steel Plant",
+      "location": "Bokaro, Jharkhand",
+      "coordinates": { "lat": 23.7, "lon": 86.2 },
+      "materials": ["Steel Coils", "Coal", "Machinery"],
+      "inventory": 920,
+      "maxInventory": 1000,
+      "inventoryUnit": "tons",
+      "pathCost": 52000,
+      "timeCost": 15,
+      "timeCostUnit": "hours",
+      "status": "Available",
+      "efficiency": 87,
+      "totalDeliveries": 51,
+      "avgCost": 45000,
+      "assignedOrders": ["ORD-2403"],
+      "operatingHours": "24/7",
+      "contactPerson": "Priya Sharma",
+      "contactPhone": "+91-9876543212"
+    },
+    {
+      "id": "CMO-4",
+      "name": "IISCO Steel Plant",
+      "location": "Burnpur, West Bengal",
+      "coordinates": { "lat": 23.6, "lon": 87.3 },
+      "materials": ["Iron Ore", "Limestone", "Steel Billets"],
+      "inventory": 480,
+      "maxInventory": 1000,
+      "inventoryUnit": "tons",
+      "pathCost": 41000,
+      "timeCost": 11,
+      "timeCostUnit": "hours",
+      "status": "Full",
+      "efficiency": 85,
+      "totalDeliveries": 42,
+      "avgCost": 41000,
+      "assignedOrders": ["ORD-2404"],
+      "operatingHours": "24/7",
+      "contactPerson": "Suresh Patel",
+      "contactPhone": "+91-9876543213"
+    }
+  ],
+  "wagons": [
+    {
+      "id": "WGN-001",
+      "type": "Box",
+      "capacity": 60000,
+      "capacityUnit": "kg",
+      "currentLoad": 53000,
+      "available": false,
+      "status": "Allocated",
+      "color": "#3b82f6",
+      "material": "Steel",
+      "assignedOrders": ["ORD-2401", "ORD-2402"],
+      "assignedRake": "RAKE-001",
+      "utilizationPercent": 88.3,
+      "costPerKm": 12,
+      "maintenanceStatus": "Good",
+      "lastMaintenance": "2025-09-15",
+      "nextMaintenance": "2025-11-15",
+      "dimensions": {
+        "length": 30,
+        "width": 10,
+        "height": 8,
+        "unit": "m"
+      }
+    },
+    {
+      "id": "WGN-002",
+      "type": "Hopper",
+      "capacity": 60000,
+      "capacityUnit": "kg",
+      "currentLoad": 47000,
+      "available": false,
+      "status": "Allocated",
+      "color": "#8b5cf6",
+      "material": "Coal",
+      "assignedOrders": ["ORD-2403"],
+      "assignedRake": "RAKE-001",
+      "utilizationPercent": 78.3,
+      "costPerKm": 15,
+      "maintenanceStatus": "Good",
+      "lastMaintenance": "2025-09-20",
+      "nextMaintenance": "2025-11-20",
+      "dimensions": {
+        "length": 30,
+        "width": 10,
+        "height": 8,
+        "unit": "m"
+      }
+    },
+    {
+      "id": "WGN-003",
+      "type": "Gondola",
+      "capacity": 60000,
+      "capacityUnit": "kg",
+      "currentLoad": 50000,
+      "available": false,
+      "status": "Allocated",
+      "color": "#06b6d4",
+      "material": "Iron Ore",
+      "assignedOrders": ["ORD-2404"],
+      "assignedRake": "RAKE-001",
+      "utilizationPercent": 83.3,
+      "costPerKm": 13.5,
+      "maintenanceStatus": "Fair",
+      "lastMaintenance": "2025-09-10",
+      "nextMaintenance": "2025-11-10",
+      "dimensions": {
+        "length": 30,
+        "width": 10,
+        "height": 8,
+        "unit": "m"
+      }
+    },
+    {
+      "id": "WGN-004",
+      "type": "Tank",
+      "capacity": 60000,
+      "capacityUnit": "kg",
+      "currentLoad": 55000,
+      "available": false,
+      "status": "Allocated",
+      "color": "#f59e0b",
+      "material": "Liquid",
+      "assignedOrders": ["ORD-2405"],
+      "assignedRake": "RAKE-001",
+      "utilizationPercent": 91.7,
+      "costPerKm": 18,
+      "maintenanceStatus": "Good",
+      "lastMaintenance": "2025-09-25",
+      "nextMaintenance": "2025-11-25",
+      "dimensions": {
+        "length": 30,
+        "width": 10,
+        "height": 8,
+        "unit": "m"
+      }
+    },
+    {
+      "id": "WGN-005",
+      "type": "Box",
+      "capacity": 60000,
+      "capacityUnit": "kg",
+      "currentLoad": 0,
+      "available": true,
+      "status": "Available",
+      "color": "#10b981",
+      "material": "Mixed",
+      "assignedOrders": [],
+      "assignedRake": null,
+      "utilizationPercent": 0,
+      "costPerKm": 12,
+      "maintenanceStatus": "Excellent",
+      "lastMaintenance": "2025-10-01",
+      "nextMaintenance": "2025-12-01",
+      "dimensions": {
+        "length": 30,
+        "width": 10,
+        "height": 8,
+        "unit": "m"
+      }
+    }
+  ],
+  "rakes": [
+    {
+      "id": "RAKE-001",
+      "wagons": ["WGN-001", "WGN-002", "WGN-003", "WGN-004", "WGN-005"],
+      "orders": ["ORD-2401", "ORD-2402", "ORD-2403", "ORD-2404", "ORD-2405"],
+      "cost": 145000,
+      "schedule": "2025-10-15T06:00:00",
+      "route": "Bhilai → Kolkata",
+      "status": "Scheduled",
+      "length": 350,
+      "lengthUnit": "m",
+      "weight": 2400,
+      "weightUnit": "tons",
+      "maxSpeed": 80,
+      "speedUnit": "km/h",
+      "estimatedDuration": 18,
+      "durationUnit": "hours",
+      "engineId": "ENG-101",
+      "driverId": "DRV-501",
+      "driverName": "Ramesh Kumar",
+      "currentLocation": {
+        "location": "Bhilai Steel Plant",
+        "coordinates": { "lat": 21.2, "lon": 81.4 }
+      },
+      "destination": {
+        "location": "Kolkata Port",
+        "coordinates": { "lat": 22.5, "lon": 88.3 }
+      },
+      "progress": 0,
+      "slaCompliance": 94,
+      "createdAt": "2025-10-12T10:00:00",
+      "updatedAt": "2025-10-13T15:00:00"
+    },
+    {
+      "id": "RAKE-002",
+      "wagons": ["WGN-006", "WGN-007", "WGN-008"],
+      "orders": ["ORD-2406", "ORD-2407"],
+      "cost": 98000,
+      "schedule": "2025-10-16T14:00:00",
+      "route": "Rourkela → Mumbai",
+      "status": "Formation",
+      "length": 210,
+      "lengthUnit": "m",
+      "weight": 1800,
+      "weightUnit": "tons",
+      "maxSpeed": 80,
+      "speedUnit": "km/h",
+      "estimatedDuration": 22,
+      "durationUnit": "hours",
+      "engineId": "ENG-102",
+      "driverId": "DRV-502",
+      "driverName": "Sunil Verma",
+      "currentLocation": {
+        "location": "Rourkela Steel Plant",
+        "coordinates": { "lat": 22.2, "lon": 84.9 }
+      },
+      "destination": {
+        "location": "Mumbai Port",
+        "coordinates": { "lat": 19.0, "lon": 72.8 }
+      },
+      "progress": 0,
+      "slaCompliance": 91,
+      "createdAt": "2025-10-13T09:00:00",
+      "updatedAt": "2025-10-13T16:00:00"
+    }
+  ],
+  "sidings": [
+    {
+      "id": "SIDING-A",
+      "name": "Siding Alpha",
+      "location": "Bhilai Yard",
+      "capacity": 5,
+      "occupied": 3,
+      "availableSlots": 2,
+      "material": "Steel",
+      "assignedWagons": ["WGN-001", "WGN-002", "WGN-003"],
+      "labor": 4,
+      "requiredLabor": 3,
+      "timeEstimate": 2,
+      "timeUnit": "hours",
+      "status": "Active",
+      "utilizationPercent": 60
+    },
+    {
+      "id": "SIDING-B",
+      "name": "Siding Beta",
+      "location": "Bhilai Yard",
+      "capacity": 6,
+      "occupied": 6,
+      "availableSlots": 0,
+      "material": "Coal",
+      "assignedWagons": ["WGN-004", "WGN-005", "WGN-006", "WGN-007", "WGN-008", "WGN-009"],
+      "labor": 6,
+      "requiredLabor": 6,
+      "timeEstimate": 3,
+      "timeUnit": "hours",
+      "status": "Full",
+      "utilizationPercent": 100
+    },
+    {
+      "id": "SIDING-C",
+      "name": "Siding Gamma",
+      "location": "Rourkela Yard",
+      "capacity": 4,
+      "occupied": 1,
+      "availableSlots": 3,
+      "material": "Mixed",
+      "assignedWagons": ["WGN-010"],
+      "labor": 2,
+      "requiredLabor": 1,
+      "timeEstimate": 1,
+      "timeUnit": "hours",
+      "status": "Active",
+      "utilizationPercent": 25
+    },
+    {
+      "id": "SIDING-D",
+      "name": "Siding Delta",
+      "location": "Bokaro Yard",
+      "capacity": 7,
+      "occupied": 4,
+      "availableSlots": 3,
+      "material": "Iron Ore",
+      "assignedWagons": ["WGN-011", "WGN-012", "WGN-013", "WGN-014"],
+      "labor": 5,
+      "requiredLabor": 4,
+      "timeEstimate": 2.5,
+      "timeUnit": "hours",
+      "status": "Active",
+      "utilizationPercent": 57
+    }
+  ],
+  "liveTracking": [
+    {
+      "id": "RAKE-001",
+      "type": "rail",
+      "currentLocation": {
+        "location": "Bhilai Steel Plant",
+        "coordinates": { "lat": 21.2, "lon": 81.4 }
+      },
+      "destination": {
+        "location": "Kolkata Port",
+        "coordinates": { "lat": 22.5, "lon": 88.3 }
+      },
+      "status": "on-time",
+      "eta": "14:30",
+      "progress": 65,
+      "route": "Bhilai → Kolkata",
+      "speed": 75,
+      "speedUnit": "km/h",
+      "lastUpdate": "2025-10-14T11:45:00"
+    },
+    {
+      "id": "TRUCK-042",
+      "type": "road",
+      "currentLocation": {
+        "location": "Near Kolkata",
+        "coordinates": { "lat": 22.5, "lon": 88.3 }
+      },
+      "destination": {
+        "location": "Asansol",
+        "coordinates": { "lat": 23.7, "lon": 86.2 }
+      },
+      "status": "delayed",
+      "eta": "16:45",
+      "progress": 48,
+      "route": "Kolkata → Asansol",
+      "speed": 45,
+      "speedUnit": "km/h",
+      "altCost": 8500,
+      "delayReason": "Traffic congestion",
+      "lastUpdate": "2025-10-14T11:50:00"
+    }
+  ],
+  "shifts": [
+    {
+      "id": "SHIFT-001",
+      "name": "Morning Shift",
+      "startTime": "06:00",
+      "endTime": "14:00",
+      "workers": 25,
+      "supervisor": "Rajesh Kumar",
+      "location": "Bhilai Yard",
+      "status": "Active"
+    },
+    {
+      "id": "SHIFT-002",
+      "name": "Afternoon Shift",
+      "startTime": "14:00",
+      "endTime": "22:00",
+      "workers": 22,
+      "supervisor": "Amit Singh",
+      "location": "Bhilai Yard",
+      "status": "Scheduled"
+    },
+    {
+      "id": "SHIFT-003",
+      "name": "Night Shift",
+      "startTime": "22:00",
+      "endTime": "06:00",
+      "workers": 18,
+      "supervisor": "Priya Sharma",
+      "location": "Bhilai Yard",
+      "status": "Scheduled"
+    }
+  ],
+  "aiInsights": [
+    {
+      "id": "INS-001",
+      "type": "alternative",
+      "title": "Alternative CMO Route",
+      "description": "CMO-3 can handle ORD-002 at ₹18,000 lower cost than current allocation",
+      "impact": "Cost Reduction: ₹18,000",
+      "severity": "info",
+      "affectedItems": ["ORD-2402", "CMO-3"],
+      "action": "/cmo-matching",
+      "createdAt": "2025-10-14T09:00:00",
+      "priority": 2
+    },
+    {
+      "id": "INS-002",
+      "type": "anomaly",
+      "title": "Capacity Constraint Detected",
+      "description": "SIDING-B approaching full capacity. Consider redistributing incoming wagons",
+      "impact": "Delay Risk: 3-4 hours",
+      "severity": "warning",
+      "affectedItems": ["SIDING-B", "WGN-015", "WGN-016"],
+      "action": "/yard-management",
+      "createdAt": "2025-10-14T10:30:00",
+      "priority": 1
+    }
+  ],
+  "metadata": {
+    "version": "1.0.0",
+    "lastUpdated": "2025-10-14T12:00:00",
+    "dataSource": "SAIL Rake Formation DSS",
+    "environment": "development"
+  }
+}

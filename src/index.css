@@ -1,0 +1,155 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Primary Palette */
+    --background: 210 20% 98%; /* #F8FAFC */
+    --foreground: 217 39% 11%; /* #111827 */
+
+    --card: 0 0% 100%; /* #FFFFFF */
+    --card-foreground: 217 39% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 217 39% 11%;
+
+    /* Primary Blue */
+    --primary: 224 64% 33%; /* #1E3A8A */
+    --primary-foreground: 0 0% 100%;
+    --primary-hover: 224 76% 48%; /* #1D4ED8 */
+
+    /* Secondary Text */
+    --secondary: 217 9% 46%; /* #6B7280 */
+    --secondary-foreground: 0 0% 100%;
+
+    /* Accent Teal */
+    --accent: 175 84% 32%; /* #0D9488 */
+    --accent-foreground: 0 0% 100%;
+
+    /* Status colors */
+    --success: 158 84% 39%; /* #10B981 */
+    --success-foreground: 0 0% 100%;
+    
+    --warning: 38 92% 50%; /* #F59E0B */
+    --warning-foreground: 217 39% 11%;
+    
+    --danger: 0 84% 51%; /* #DC2626 */
+    --danger-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --info: 217 91% 60%; /* #3B82F6 */
+    --info-foreground: 0 0% 100%;
+
+    /* Neutral surfaces */
+    --muted: 214 11% 65%; /* #9CA3AF */
+    --muted-foreground: 217 9% 46%; /* #6B7280 */
+
+    --border: 220 13% 91%; /* #E5E7EB */
+    --input: 220 13% 91%;
+    --ring: 199 89% 48%; /* #0EA5E9 */
+
+    --radius: 1rem;
+
+    /* Sidebar - minimal professional theme */
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 217 39% 11%;
+    --sidebar-primary: 224 64% 33%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 210 20% 98%;
+    --sidebar-accent-foreground: 224 64% 33%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 199 89% 48%;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(224 64% 33%), hsl(224 76% 48%));
+    --gradient-accent: linear-gradient(135deg, hsl(175 84% 32%), hsl(175 84% 42%));
+    --gradient-surface: linear-gradient(180deg, hsl(210 20% 98%), hsl(0 0% 100%));
+
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+    --shadow-highlight: 0 0 0 3px hsl(199 89% 48% / 0.2);
+
+    /* Transitions */
+    --transition-base: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .dark {
+    --background: 217 19% 27%; /* #374151 */
+    --foreground: 210 20% 98%;
+
+    --card: 217 39% 11%;
+    --card-foreground: 210 20% 98%;
+
+    --popover: 217 39% 11%;
+    --popover-foreground: 210 20% 98%;
+
+    --primary: 224 76% 48%;
+    --primary-foreground: 0 0% 100%;
+    --primary-hover: 224 64% 33%;
+
+    --secondary: 217 9% 46%;
+    --secondary-foreground: 210 20% 98%;
+
+    --accent: 175 84% 32%;
+    --accent-foreground: 0 0% 100%;
+
+    --success: 158 84% 39%;
+    --success-foreground: 0 0% 100%;
+    
+    --warning: 38 92% 50%;
+    --warning-foreground: 217 39% 11%;
+    
+    --danger: 0 84% 51%;
+    --danger-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --info: 217 91% 60%;
+    --info-foreground: 0 0% 100%;
+
+    --muted: 214 11% 65%;
+    --muted-foreground: 217 9% 46%;
+
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 199 89% 48%;
+
+    --sidebar-background: 217 39% 11%;
+    --sidebar-foreground: 210 20% 98%;
+    --sidebar-primary: 224 76% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 217 19% 27%;
+    --sidebar-accent-foreground: 210 20% 98%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 199 89% 48%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@import 'leaflet/dist/leaflet.css';
+
+.leaflet-container {
+  width: 100%;
+  height: 100%;
+  border-radius: 0.5rem;
+}

@@ -1,0 +1,230 @@
+import { useState, useRef, useMemo } from "react";
+import { DndProvider } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { DraggableItem } from "@/components/shared/DraggableItem";
+import { DropZone } from "@/components/shared/DropZone";
+import { MapPin, RefreshCw, AlertCircle } from "lucide-react";
+import { toast } from "sonner";
+import { dataService } from "@/services/dataService";
+import type { CMO, Order } from "@/types";
+import RailwayMap from "@/components/map/RailwayMap";
+
+const CMOMatching = () => {
+  const allCMOs = dataService.getAllCMOs();
+  const allOrders = dataService.getAllOrders().filter(order => order.status === "Active").slice(0, 3);
+  
+  const [allocations, setAllocations] = useState<Record<string, string[]>>({});
+  const cmoCardsRef = useRef<Record<string, HTMLDivElement | null>>({});
+
+  // Convert CMOs to vehicles format for RailwayMap
+  const cmoVehicles = useMemo(() => {
+    return allCMOs.map(cmo => ({
+      id: cmo.id,
+      type: 'rail' as const,
+      lat: cmo.lat,
+      lon: cmo.lon,
+      status: 'on-time',
+      eta: 'N/A',
+      route: 'CMO',
+      name: cmo.name,
+      status: cmo.status || 'on-time'
+    }));
+  }, [allCMOs]);
+
+  // Define routes between CMOs (example: connect CMOs with lines)
+  const cmoRoutes = useMemo(() => {
+    if (allCMOs.length < 2) return [];
+    
+    return [
+      {
+        name: 'CMO Network',
+        coordinates: allCMOs.slice(0, 3).map(cmo => ({
+          lat: cmo.lat,
+          lng: cmo.lon
+        })),
+        color: '#3b82f6'
+      }
+    ];
+  }, [allCMOs]);
+
+  const handleDrop = (cmoId: string, item: any) => {
+    setAllocations(prev => ({
+      ...prev,
+      [cmoId]: [...(prev[cmoId] || []), item.id]
+    }));
+    toast.success(`Order ${item.id} allocated to ${cmoId}`);
+  };
+
+  const handleRecalculate = () => {
+    toast.info("Recalculating optimal allocations...", {
+      description: "Updated cost and time estimates"
+    });
+  };
+
+  const handleCMOClick = (cmoId: string) => {
+    const element = cmoCardsRef.current[cmoId];
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth", block: "center" });
+      element.classList.add("ring-2", "ring-primary");
+      setTimeout(() => {
+        element.classList.remove("ring-2", "ring-primary");
+      }, 2000);
+    }
+  };
+
+  return (
+    <DndProvider backend={HTML5Backend}>
+      <div className="space-y-6">
+        <div className="flex items-center justify-between">
+          <div>
+            <h1 className="text-2xl font-bold tracking-tight">CMO Order Matching</h1>
+            <p className="text-muted-foreground">
+              Match orders with CMOs based on material requirements and availability
+            </p>
+          </div>
+          <Button onClick={handleRecalculate}>
+            <RefreshCw className="mr-2 h-4 w-4" />
+            Recalculate Matches
+          </Button>
+        </div>
+
+        <div className="grid gap-6 lg:grid-cols-3">
+          <div className="lg:col-span-2 space-y-4">
+            <Card className="shadow-md">
+              <CardHeader>
+                <div className="flex items-center gap-2">
+                  <MapPin className="h-5 w-5" />
+                  <CardTitle>CMO Location Map</CardTitle>
+                </div>
+              </CardHeader>
+              <CardContent className="p-0">
+                <div style={{ height: '500px' }}>
+                  <RailwayMap 
+                    vehicles={cmoVehicles}
+                    routes={cmoRoutes}
+                    showRoutes={true}
+                    onVehicleClick={(vehicle) => handleCMOClick(vehicle.id)}
+                    initialViewState={{
+                      latitude: 20.5937,  // Center of India
+                      longitude: 78.9629,
+                      zoom: 4
+                    }}
+                  />
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Rest of your existing JSX */}
+            <div className="space-y-4">
+              {allCMOs.map((cmo) => (
+                <Card 
+                  key={cmo.id} 
+                  ref={el => cmoCardsRef.current[cmo.id] = el}
+                  className="transition-all duration-200"
+                >
+                  <CardHeader>
+                    <CardTitle className="flex justify-between items-center">
+                      <div className="flex items-center gap-2">
+                        <MapPin className="h-5 w-5 text-primary" />
+                        {cmo.name}
+                      </div>
+                      <Badge variant={cmo.status === 'Available' ? 'default' : 'destructive'}>
+                        {cmo.status}
+                      </Badge>
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-4">
+                      <div>
+                        <h4 className="text-sm font-medium">Materials Available</h4>
+                        <div className="flex flex-wrap gap-2 mt-2">
+                          {cmo.materials.map((material) => (
+                            <Badge key={material} variant="outline">
+                              {material}
+                            </Badge>
+                          ))}
+                        </div>
+                      </div>
+                      <div>
+                        <h4 className="text-sm font-medium">Inventory</h4>
+                        <div className="w-full bg-gray-200 rounded-full h-2.5 mt-2">
+                          <div 
+                            className="bg-primary h-2.5 rounded-full" 
+                            style={{ width: `${(cmo.inventory / 1000) * 100}%` }}
+                          />
+                        </div>
+                        <p className="text-xs text-muted-foreground mt-1">
+                          {cmo.inventory} units available
+                        </p>
+                      </div>
+                      <div>
+                        <h4 className="text-sm font-medium">Assigned Orders</h4>
+                        <DropZone 
+                          onDrop={(item) => handleDrop(cmo.id, item)}
+                          className="min-h-[100px] mt-2"
+                        >
+                          {(allocations[cmo.id] || []).map((orderId) => {
+                            const order = allOrders.find(o => o.id === orderId);
+                            return order ? (
+                              <DraggableItem key={orderId} id={orderId}>
+                                <div className="p-2 border rounded bg-background">
+                                  <p className="font-medium">Order #{order.id}</p>
+                                  <p className="text-sm text-muted-foreground">
+                                    {order.materialType} • {order.quantity} {order.quantityUnit}
+                                  </p>
+                                </div>
+                              </DraggableItem>
+                            ) : null;
+                          })}
+                        </DropZone>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+
+          <div className="space-y-4">
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <AlertCircle className="h-5 w-5" />
+                  Available Orders
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-2">
+                  {allOrders.map((order) => (
+                    <DraggableItem key={order.id} id={order.id}>
+                      <div className="p-3 border rounded-lg bg-background hover:bg-accent cursor-move">
+                        <div className="flex justify-between items-start">
+                          <div>
+                            <p className="font-medium">Order #{order.id}</p>
+                            <p className="text-sm text-muted-foreground">{order.materialType}</p>
+                          </div>
+                          <Badge variant="secondary">
+                            {order.priority} Priority
+                          </Badge>
+                        </div>
+                        <div className="mt-2 text-sm space-y-1">
+                          <p>Quantity: {order.quantity} {order.quantityUnit}</p>
+                          <p>Delivery: {new Date(order.deliveryDateTime).toLocaleDateString()}</p>
+                        </div>
+                      </div>
+                    </DraggableItem>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </div>
+    </DndProvider>
+  );
+};
+
+export default CMOMatching;
